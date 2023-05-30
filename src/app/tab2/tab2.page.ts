@@ -8,7 +8,8 @@ import { PasswordService } from '../services/password.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
-  allPasswords: IPasswordResponse[] = [ ]
+
+  allPasswords: IPasswordResponse[] = []
   lastAttendanceIsTrue: IPasswordResponse = {
     id: '',
     password: '',
@@ -30,6 +31,13 @@ export class Tab2Page implements OnInit {
     this.passwordService.findLastAttendanceIsTrue().subscribe((password) => {
 
       this.lastAttendanceIsTrue = password;
+    })
+  }
+
+  callPassword() {
+    this.passwordService.callAttendance().subscribe((password) => {
+      console.log(`senha chamada com foi ${password}`)
+      this.ngOnInit()
     })
   }
 }

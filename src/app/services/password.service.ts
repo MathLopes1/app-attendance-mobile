@@ -25,4 +25,8 @@ export class PasswordService {
   findLastAttendanceIsTrue(): Observable<IPasswordResponse>{
     return this.http.get<IPasswordResponse>(this.API + '/lastAttendance')
   }
+
+  callAttendance(): Observable<IPasswordResponse>{
+    return this.http.put<IPasswordResponse>(this.API + '/callAttendance', {})
+  }
 }
