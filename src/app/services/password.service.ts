@@ -18,7 +18,11 @@ export class PasswordService {
     return this.http.post<IPasswordResponse>(this.API, ticket);
   }
 
-  listAllTickets(): Observable<IPassword[]>{
+  listAllTPasswordsIsAttendanceTrue(): Observable<IPasswordResponse[]>{
     return this.http.get<IPasswordResponse[]>(this.API)
+  }
+
+  findLastAttendanceIsTrue(): Observable<IPasswordResponse>{
+    return this.http.get<IPasswordResponse>(this.API + '/lastAttendance')
   }
 }

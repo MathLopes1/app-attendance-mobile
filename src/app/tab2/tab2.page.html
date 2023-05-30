@@ -17,7 +17,7 @@
     <ion-card-header>
       <ion-list>
         <ion-item>
-          <h1>Última senha: 230523-SP01</h1>
+          <h1>Última senha: {{lastAttendanceIsTrue.password}}</h1>
         </ion-item>
       </ion-list>
     </ion-card-header>
@@ -28,12 +28,8 @@
 
   <ion-card>
     <ion-card-content>
-      <ion-list label="Últimas senhas:">
-        <ion-item>230523-SP01</ion-item>
-        <ion-item>230523-SP01</ion-item>
-        <ion-item>230523-SP01</ion-item>
-        <ion-item>230523-SP01</ion-item>
-        <ion-item>230523-SP01</ion-item>
+      <ion-list *ngFor="let password of allPasswords">
+        <ion-item>{{password.password}}</ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
