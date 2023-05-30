@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IPassword, IPasswordResponse } from '../interfaces/IPassword';
+import { IMetrics } from '../interfaces/IMetrics';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,9 @@ export class PasswordService {
 
   callAttendance(): Observable<IPasswordResponse>{
     return this.http.put<IPasswordResponse>(this.API + '/callAttendance', {})
+  }
+
+  metricsOfAttendance(): Observable<IMetrics>{
+    return this.http.get<IMetrics>(this.API + '/count-by-prioritys', {})
   }
 }
