@@ -1,13 +1,14 @@
 import { IMetrics } from '../interfaces/IMetrics';
 import { PasswordService } from './../services/password.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { IonRouterOutlet } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
-export class Tab3Page implements OnInit {
+export class Tab3Page  {
   metrics: IMetrics = {
     formattedGenericResults: {
       SE: 0,
@@ -25,14 +26,15 @@ export class Tab3Page implements OnInit {
 
   constructor(
     private passwordService: PasswordService,
+    private ionRouterOutlet: IonRouterOutlet
   ) {}
 
-  ngOnInit(): void {
+
+  ionViewDidEnter() {
     this.passwordService.metricsOfAttendance().subscribe((metrics) => {
-      if(metrics.totalGenerated > 0) {
+      if (metrics.totalGenerated > 0) {
         this.metrics = metrics;
       }
-    })
+    });
   }
-
 }
